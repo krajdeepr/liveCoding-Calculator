@@ -3,12 +3,20 @@ function dis(val) {
 }
 
 function solve() {
-  let x = document.getElementById("display").value;
-  let y = eval(x);
-  document.getElementById("display").value = y;
+  try {
+    let x = document.getElementById("display").value;
+    let y = eval(x);
+    document.getElementById("display").value = y;
+  } catch (error) {
+    document.getElementById("display").value = "invalid expression";
+  }
 }
-function keyBoard() {
-  document.getElementById("display").style.backgroundColor = "#ebb9b9";
+function keyBoard(evt) {
+  var iKeyCode = evt.which ? evt.which : evt.keyCode;
+  if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+    return false;
+
+  return true;
 }
 
 function clr() {
